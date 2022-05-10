@@ -1,18 +1,36 @@
 <nav>
     <div class="nav-wrapper">
-      <a href="#" class="brand-logo">Logo</a>
+      <a href="#" class="brand-logo">KİTAP MAĞAZASI</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         
       {{#if isIndex}}
-      <li class="active"<a href="/">ToDos</a> </li>
+      <li class="active"<a href="/">KİTAP</a> </li>
       {{else}}
-      <li> <a href="/">ToDos</a></li>
+      <li> <a href="/">KİTAP</a></li>
       {{/if}}
 
-      {{#if iscCreate}}
-      <li><a href="/create">Create</a></li>
+      {{#if isLibrary}}
+      <li><a href="/library">KIRTASİYE</a></li>
       {{else}}
-      <li><a href="/create">Create</a></li>
+      <li><a href="/library">KIRTASİYE</a></li>
+      {{/if}}
+
+      {{#if isTechnology}}
+      <li><a href="/technology">TEKNOLOJİ</a></li>
+      {{else}}
+      <li><a href="/technology">TEKNOLOJİ</a></li>
+      {{/if}}
+
+      {{#if isToy}}
+      <li><a href="/toy">OYUNCAK</a></li>
+      {{else}}
+      <li><a href="/toy">OYUNCAK</a></li>
+      {{/if}}
+
+      {{#if isElectronic}}
+      <li><a href="/electronic">ELEKTRONİK</a></li>
+      {{else}}
+      <li><a href="/electronic">ELEKTRONİK</a></li>
       {{/if}}
 
       </ul>

@@ -1,8 +1,52 @@
 const {Router} = require("express")
 const res = require("express/lib/response")
 const BlogSite =  require("../model/BlogSite")
+const mongo = require('mongodb').MongoClient
+var assert = require('assert')
+
+var url = 'mongodb://localhost:27017/myFirstDatabase';
 
 const router = Router()
+
+/*const database = 'myFirstDatabase';
+const collection = 'book_data';*/
+
+
+router.get('/get_data', function(req, res) {
+    var resultArray = [];
+    mongo.connect(url, function(err, db){
+        assert.equal(null, err);
+        var cursor = client.db.collection('book_data').find();
+        cursor.forEach(function(doc, err) {
+            assert.equal(null, err);
+            resultArray.push(doc);
+        }, function() {
+            db.close();
+            res.render('/', {items: resultArray});
+        });
+    })
+})
+
+router.post('/insert', function(req, res){
+    var item = {
+        title: req.body.title,
+        content: req.body.content,
+        author: req.body.author
+    };
+
+    mongo.connect(url, function(err, db){
+        assert.equal(null, err);
+        db.collection('book_data').insertOne(item, function(err, db){
+            assert.equal(null, err);
+            console.log('Item inserted');
+            db.close();
+        });
+    });
+})
+
+
+
+
 
 router.get('/', async (req,res) =>{
 
